@@ -24,9 +24,9 @@ namespace iAutoCarro.Api.Controllers
             if(string.IsNullOrEmpty(codigo))
                 throw new ArgumentNullException(codigo);
 
-            //var data = getDataFromHtml(codigo);
+            var data = getDataFromHtml(codigo);
             
-            var data = getDataFromFile(codigo);
+            //var data = getDataFromFile(codigo);
 
             return populateBuses(data);
         }
@@ -48,7 +48,7 @@ namespace iAutoCarro.Api.Controllers
 
                 var datax = string.Empty;
 
-
+                int count = 0;
 
                 foreach (var cell in query)
                 {
@@ -60,14 +60,16 @@ namespace iAutoCarro.Api.Controllers
 
                     Int32.TryParse(dados[1].Split(" ")[0], out resultNumber);
 
+                    
                     Bus bus = new Bus
                     {
+                        Id= count,
                         Number = resultNumber,
                         Line = dados[1].Split(" ")[1],
                         EstimatedTime = convertEstimatedTime(dados[2]),
                         WaitingTime = convertToWaitingTime(dados[3])
                     };
-
+                    count++;
                     buses.Add(bus);
                 }
             }

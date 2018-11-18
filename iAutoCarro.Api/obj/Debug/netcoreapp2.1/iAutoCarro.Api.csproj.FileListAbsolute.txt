@@ -12,3 +12,6 @@ C:\Projetos\iAutoCarro\iAutoCarro.Api\obj\Debug\netcoreapp2.1\iAutoCarro.Api.Ass
 C:\Projetos\iAutoCarro\iAutoCarro.Api\obj\Debug\netcoreapp2.1\iAutoCarro.Api.RazorTargetAssemblyInfo.cache
 C:\Projetos\iAutoCarro\iAutoCarro.Api\obj\Debug\netcoreapp2.1\iAutoCarro.Api.dll
 C:\Projetos\iAutoCarro\iAutoCarro.Api\obj\Debug\netcoreapp2.1\iAutoCarro.Api.pdb
+C:\Projetos\iAutoCarro\iAutoCarro.Api\bin\Debug\netcoreapp2.1\iAutoCarro.Model.dll
+C:\Projetos\iAutoCarro\iAutoCarro.Api\bin\Debug\netcoreapp2.1\iAutoCarro.Model.pdb
+C:\Projetos\iAutoCarro\iAutoCarro.Api\obj\Debug\netcoreapp2.1\iAutoCarro.Api.csproj.CopyComplete

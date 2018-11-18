@@ -1,0 +1,9 @@
+C:\Projetos\iAutoCarro\iAutoCarro.Model\bin\Debug\netstandard2.0\iAutoCarro.Model.deps.json
+C:\Projetos\iAutoCarro\iAutoCarro.Model\bin\Debug\netstandard2.0\iAutoCarro.Model.dll
+C:\Projetos\iAutoCarro\iAutoCarro.Model\bin\Debug\netstandard2.0\iAutoCarro.Model.pdb
+C:\Projetos\iAutoCarro\iAutoCarro.Model\obj\Debug\netstandard2.0\iAutoCarro.Model.csprojAssemblyReference.cache
+C:\Projetos\iAutoCarro\iAutoCarro.Model\obj\Debug\netstandard2.0\iAutoCarro.Model.csproj.CoreCompileInputs.cache
+C:\Projetos\iAutoCarro\iAutoCarro.Model\obj\Debug\netstandard2.0\iAutoCarro.Model.AssemblyInfoInputs.cache
+C:\Projetos\iAutoCarro\iAutoCarro.Model\obj\Debug\netstandard2.0\iAutoCarro.Model.AssemblyInfo.cs
+C:\Projetos\iAutoCarro\iAutoCarro.Model\obj\Debug\netstandard2.0\iAutoCarro.Model.dll
+C:\Projetos\iAutoCarro\iAutoCarro.Model\obj\Debug\netstandard2.0\iAutoCarro.Model.pdb

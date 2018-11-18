@@ -5193,19 +5193,31 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "iAutoCarro.Api/1.0.0": {
+      "iAutoCarro.App/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "HtmlAgilityPack": "1.8.10",
+          "Microsoft.AspNetCore.SpaServices.Extensions": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
+          "iAutoCarro.Model": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/iAutoCarro.Api.dll": {}
+          "bin/placeholder/iAutoCarro.App.dll": {}
         },
         "runtime": {
-          "bin/placeholder/iAutoCarro.Api.dll": {}
+          "bin/placeholder/iAutoCarro.App.dll": {}
+        }
+      },
+      "iAutoCarro.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/iAutoCarro.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/iAutoCarro.Model.dll": {}
         }
       }
     }
@@ -13903,10 +13915,15 @@
         "system.xml.xpath.xmldocument.nuspec"
       ]
     },
-    "iAutoCarro.Api/1.0.0": {
+    "iAutoCarro.App/1.0.0": {
       "type": "project",
-      "path": "../iAutoCarro.Api/iAutoCarro.Api.csproj",
-      "msbuildProject": "../iAutoCarro.Api/iAutoCarro.Api.csproj"
+      "path": "../iAutoCarro.App/iAutoCarro.App.csproj",
+      "msbuildProject": "../iAutoCarro.App/iAutoCarro.App.csproj"
+    },
+    "iAutoCarro.Model/1.0.0": {
+      "type": "project",
+      "path": "../iAutoCarro.Model/iAutoCarro.Model.csproj",
+      "msbuildProject": "../iAutoCarro.Model/iAutoCarro.Model.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13917,7 +13934,8 @@
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.NET.Test.Sdk >= 15.8.0",
       "Microsoft.NETCore.App >= 2.1.0",
-      "iAutoCarro.Api >= 1.0.0"
+      "iAutoCarro.App >= 1.0.0",
+      "iAutoCarro.Model >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -13951,8 +13969,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Projetos\\iAutoCarro\\iAutoCarro.Api\\iAutoCarro.Api.csproj": {
-              "projectPath": "C:\\Projetos\\iAutoCarro\\iAutoCarro.Api\\iAutoCarro.Api.csproj"
+            "C:\\Projetos\\iAutoCarro\\iAutoCarro.App\\iAutoCarro.App.csproj": {
+              "projectPath": "C:\\Projetos\\iAutoCarro\\iAutoCarro.App\\iAutoCarro.App.csproj"
+            },
+            "C:\\Projetos\\iAutoCarro\\iAutoCarro.Model\\iAutoCarro.Model.csproj": {
+              "projectPath": "C:\\Projetos\\iAutoCarro\\iAutoCarro.Model\\iAutoCarro.Model.csproj"
             }
           }
         }

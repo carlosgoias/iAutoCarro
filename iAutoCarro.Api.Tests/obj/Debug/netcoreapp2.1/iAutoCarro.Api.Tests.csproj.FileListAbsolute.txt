@@ -5,8 +5,6 @@ C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.A
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.Api.Tests.runtimeconfig.json
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.Api.Tests.runtimeconfig.dev.json
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.Api.Tests.dll
-C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.Api.dll
-C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.Api.pdb
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\obj\Debug\netcoreapp2.1\iAutoCarro.Api.Tests.csprojAssemblyReference.cache
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\obj\Debug\netcoreapp2.1\iAutoCarro.Api.Tests.csproj.CoreCompileInputs.cache
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\obj\Debug\netcoreapp2.1\iAutoCarro.Api.Tests.AssemblyInfoInputs.cache
@@ -16,3 +14,7 @@ C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.A
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\obj\Debug\netcoreapp2.1\iAutoCarro.Api.Tests.dll
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\obj\Debug\netcoreapp2.1\iAutoCarro.Api.Tests.pdb
 C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\Mocks\LION1.html
+C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.Model.dll
+C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.Model.pdb
+C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.App.dll
+C:\Projetos\iAutoCarro\iAutoCarro.Api.Tests\bin\Debug\netcoreapp2.1\iAutoCarro.App.pdb

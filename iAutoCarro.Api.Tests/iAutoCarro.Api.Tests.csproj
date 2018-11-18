@@ -25,7 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\iAutoCarro.Api\iAutoCarro.Api.csproj" />
+    <ProjectReference Include="..\iAutoCarro.App\iAutoCarro.App.csproj" />
+    <ProjectReference Include="..\iAutoCarro.Model\iAutoCarro.Model.csproj" />
   </ItemGroup>
 
 </Project>
