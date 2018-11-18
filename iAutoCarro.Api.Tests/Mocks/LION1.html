@@ -1,0 +1,32 @@
+			<div id="smsBusHeader">
+				<div class="filtro">
+					<a href="http://www.stcp.pt/smsBusMicroSite/index.html" target="_blank"><img border="0" src="/temas/stcp/imgs/logo-smsbus.jpg" /></a>
+					
+					<form action="" id="frmFiltro">
+						<label for="linhasmsbus">Filtar por linha</label>
+						<input type="hidden" name="paragem" value="LION1" />
+						<input type="hidden" name="t" value="smsbus" />
+						<select id="linhasmsbus" name="linha" onchange="javascript: frmFiltro.submit();">
+							<option value="0">---</option>
+														<option value="505">505 </option>
+													</select>
+					</form>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<table id="smsBusResults" width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<th>Linha</th>
+					<th>Hora Prevista</th>
+					<th>Tempo de Espera</th>
+				</tr>
+								<tr class="even">
+					<td>		<ul class="linhasAssoc">
+					<li><a target="_self" class="linha_505" title="" href="/pt/viajar/linhas/?linha=505 ">505 </a></li>
+					</ul>
+		&nbsp;H.S.JOÃO CIR</td>
+					<td><i>13:23</i></td>
+					<td>57min</td>
+				</tr>
+							</table>
+			
