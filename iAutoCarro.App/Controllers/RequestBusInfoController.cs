@@ -24,7 +24,7 @@ namespace iAutoCarro.Api.Controllers
             if(string.IsNullOrEmpty(codigo))
                 throw new ArgumentNullException(codigo);
 
-            var data = getDataFromHtml(codigo);
+            var data = getDataFromHtml(codigo).GetAwaiter().GetResult();
             
             //var data = getDataFromFile(codigo);
 
@@ -79,11 +79,15 @@ namespace iAutoCarro.Api.Controllers
 
             return buses;
         }
-        private string getDataFromHtml(string codigo)
+        private async Task<string> getDataFromHtml(string codigo)
         {
             string urlAddress = $"https://www.stcp.pt/pt/itinerarium/soapclient.php?codigo={codigo}&linha=0";
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlAddress);                        
+            request.KeepAlive = true;
+            request.Accept = "*/*";
+            request.Timeout = 9900;
+            
             HttpWebResponse response = (HttpWebResponse)request.GetResponseAsync().GetAwaiter().GetResult();
             request.Method = "GET";
 

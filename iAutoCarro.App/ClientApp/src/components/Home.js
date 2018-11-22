@@ -1,4 +1,17 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
 
 export class Home extends Component {
     displayName = Home.name
@@ -6,26 +19,29 @@ export class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            buses: [], loading: false, input: '', used: false, modal: false,
+            buses: [], loading: false, input: '', used: false, modalIsOpen: false, modalMessage: null,
             errors: {} };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleValidation = this.handleValidation.bind(this);
         this.queryBusInfo = this.queryBusInfo.bind(this);
         this.render = this.render.bind(this);        
-        this.showImageExample = this.showImageExample.bind(this);
+        this.queryBusInfo = this.queryBusInfo.bind(this);
 
-        let me = this;
-        
+        this.openModal = this.openModal.bind(this);
+        this.afterOpenModal = this.afterOpenModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);        
+    }
 
-        window.onclick = function (event) {
-            let modal = document.getElementById('pictureModal');     
+    openModal(message) {
+        this.setState({ modalIsOpen: true, modalMessage: message });
+    }
 
-            if (event.target == modal) {               
-                modal.style.display = "none";
-                me.setState({ modal: true });
-            }
-        }
-        
+    afterOpenModal() {
+    }
+
+    closeModal() {
+        this.setState({ modalIsOpen: false });
     }
 
     handleValidation() {
@@ -36,7 +52,9 @@ export class Home extends Component {
         //Name
         if (!input) {
             formIsValid = false;
-            errors["codigo"] = "Cannot be empty";
+            errors["codigo"] = "Bus Stop Code cannot be empty";
+
+            this.openModal(2);
         }
 
         this.setState({ errors: errors });
@@ -47,29 +65,38 @@ export class Home extends Component {
         this.setState({ input: e.target.value });
     }
     
-    queryBusInfo = async () =>
-    {
+    queryBusInfo() {
 
         if (this.handleValidation()) {
             let oldValue = this.state.input;
-
-            this.state = { buses: [], loading: true, input: oldValue };
-
-            const response = await fetch('/api/RequestBusInfo?codigo=' + oldValue)
-                .then(response);
-
             
-            let json = response.json();
-            if (response.status !== 200) {
-                json.then(error => {
-                    console.error(error);
-                })
-            } else {
-                json.then(json => {
-                    this.setState({ buses: json, loading: false, used: true});
-                })
-            }
+
+            this.setState({ buses: [], loading: true, input: oldValue });
+
+            this.requestBusInfo();
         }
+    }
+
+    requestBusInfo = async () => {
+
+
+        const response = await fetch('/api/RequestBusInfo?codigo=' + this.state.input)
+            .then(response);
+
+
+        let json = response.json();
+        if (response.status !== 200) {
+            json.then(error => {
+                this.setState({ errors: error });
+                this.openModal(2);
+                this.setState({ buses: [], loading: false, used: true });
+            })
+        } else {
+            json.then(json => {
+                this.setState({ buses: json, loading: false, used: true });
+            })
+        }
+
     }
 
     static renderBusesTable(buses) {
@@ -96,16 +123,10 @@ export class Home extends Component {
             </table>
         );
     }
-
-    showImageExample() {
-        let modal = document.getElementById('pictureModal');        
-        modal.style.display = "block"; 
-        this.setState({ modal: true });
-    }
-
+    
     render() {
         let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
+            ? <p>Loading...</p>
             : this.state.used && this.state.buses.length > 0
                 ? Home.renderBusesTable(this.state.buses)
                 : this.state.used ? <span style={{ color: "red" }}>No records were found</span> : "";
@@ -113,30 +134,42 @@ export class Home extends Component {
         return (
           
             <div>
-                    <h1>Hello, world!</h1>
-                    <p>Welcome to your autocarro real time tracking app</p>
+                    <h3>Hello, world!</h3>
+                    <p>Welcome to your autocarro STCP Porto Portugal real time tracking app</p>
                     <p>To help you get started, please insert your <b>bus stop code</b>:</p>
                    <div class="input-group input-group-lg">
                        
-                    <input ref="codigo" type="text" class="form-control form-control-lg" onChange={this.handleChange} id="codigo" value={this.state.input} placeholder="Example: LION1" />
-                        <span style={{ color: "red" }}>{this.state.errors["codigo"]}</span>
+                    <input ref="codigo" type="text" disabled={this.state.loading} class="form-control form-control-lg" onChange={this.handleChange} id="codigo" value={this.state.input} placeholder="Example: LION1" />
+                    
+                    <div class="row"></div>
                             <div class="input-group-btn">
-                                <button class="btn btn-default" onClick={this.showImageExample}>
+                        <button class="btn btn-default" onClick={this.openModal}>
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                 </button>
                             </div>
                     </div>
-                
-                <div id="pictureModal" class="modal">
-                    
-                    <div class="modal-content">
-                        <p><img src="examplebusstopcode.png" /></p>
-                    </div>
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                >
 
-                </div>
-                
-                
-                    <button onClick={this.queryBusInfo} class="btn btn-primary btn-lg btn-block">Go!</button>
+                    {
+                        
+                        this.state.modalMessage == 2 ?
+                           
+                                <span style={{ color: "red" }}>{this.state.errors["codigo"]}</span>
+                                :
+                                <div class="modal-content">
+                                    <p><img src="examplebusstopcode.png" /></p>
+                                </div>
+
+                    }
+
+                </Modal>
+                <button onClick={this.queryBusInfo} disabled={this.state.loading} class="btn btn-primary btn-lg btn-block">Go!</button>
                    
                   <div>
                       {contents}
