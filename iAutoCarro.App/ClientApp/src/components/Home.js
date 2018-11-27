@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -7,11 +6,30 @@ const customStyles = {
         top: '50%',
         left: '50%',
         right: 'auto',
+        bottom: 'auto',        
+        marginRight: '-50%',     
+        'z-index': '50 important!',
+        transform: 'translate(-50%, -50%)'        
+    }
+
+};
+
+const loadingStyle = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
         bottom: 'auto',
+        width: '100%',
+        height: '100%',        
         marginRight: '-50%',
+        'z-index': '60 important!',
         transform: 'translate(-50%, -50%)'
     }
+
 };
+
+
 
 export class Home extends Component {
     displayName = Home.name
@@ -41,7 +59,7 @@ export class Home extends Component {
     }
 
     closeModal() {
-        this.setState({ modalIsOpen: false });
+        this.setState({ modalIsOpen: false, loading: false });
     }
 
     handleValidation() {
@@ -126,55 +144,78 @@ export class Home extends Component {
     
     render() {
         let contents = this.state.loading
-            ? <p>Loading...</p>
+            ? ""
             : this.state.used && this.state.buses.length > 0
                 ? Home.renderBusesTable(this.state.buses)
                 : this.state.used ? <span style={{ color: "red" }}>No records were found</span> : "";
 
         return (
-          
+
             <div>
-                    <h3>Hello, world!</h3>
-                    <p>Welcome to your autocarro STCP Porto Portugal real time tracking app</p>
-                    <p>To help you get started, please insert your <b>bus stop code</b>:</p>
-                   <div class="input-group input-group-lg">
+                <div class="divForm">
+                        <h3>Hello, world!</h3>
+                        <p>Welcome to your autocarro STCP Porto Portugal real time tracking app</p>
+                        <p>To help you get started, please insert your <b>bus stop code</b>:</p>
+                    <div class="input-group input-group-lg divForm">
                        
-                    <input ref="codigo" type="text" disabled={this.state.loading} class="form-control form-control-lg" onChange={this.handleChange} id="codigo" value={this.state.input} placeholder="Example: LION1" />
+                        <input ref="codigo" type="text" class="form-control form-control-lg" onChange={this.handleChange} id="codigo" value={this.state.input} placeholder="Example: LION1" />
                     
-                    <div class="row"></div>
-                            <div class="input-group-btn">
-                        <button class="btn btn-default" onClick={this.openModal}>
-                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                </button>
-                            </div>
+                        <div class="row"></div>
+                                <div class="input-group-btn">
+                            <button class="btn btn-default" onClick={this.openModal}>
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                        </div>
+                
+                    <button onClick={this.queryBusInfo} disabled={this.state.loading} class="btn btn-primary btn-lg btn-block">Go!</button>
+                   
+                      <div>
+                          {contents}
                     </div>
+                </div>
+
+
                 <Modal
                     isOpen={this.state.modalIsOpen}
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
                     style={customStyles}
-                    contentLabel="Example Modal"
+                    contentLabel=""
                 >
 
                     {
-                        
+
                         this.state.modalMessage == 2 ?
-                           
-                                <span style={{ color: "red" }}>{this.state.errors["codigo"]}</span>
-                                :
-                                <div class="modal-content">
-                                    <p><img src="examplebusstopcode.png" /></p>
-                                </div>
+
+                            <span style={{ color: "red" }}>{this.state.errors["codigo"]}</span>
+                            :
+                            <div class="modal-content">
+                                <p><img src="examplebusstopcode.png" /></p>
+                            </div>
 
                     }
 
                 </Modal>
-                <button onClick={this.queryBusInfo} disabled={this.state.loading} class="btn btn-primary btn-lg btn-block">Go!</button>
-                   
-                  <div>
-                      {contents}
-                </div>
-            </div>         
+
+                <Modal
+                    isOpen={this.state.loading}
+                    onAfterOpen={this.afterOpenModal}
+                    onRequestClose={this.closeModal}
+                    style={loadingStyle}
+                    class='modalLoading'
+                >
+                    <div id="loading">
+                        <ul class="bokeh">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </Modal>
+            </div>      
+
+
           
     );
   }
